@@ -1,0 +1,4 @@
+[keymap]
+"Ctrl+f" = "search"
+"Ctrl+r" = "refresh"
+
