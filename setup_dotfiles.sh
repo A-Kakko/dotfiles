@@ -68,7 +68,7 @@ link_dotfile "$HOME/.config/eww" ".config/eww"
 link_dotfile "$HOME/.config/"
 
 # その他の設定
-link_dotfile "$HOME/.config/fish" "./config/fish"
+link_dotfile "$HOME/.config/fish" ".config/fish"
 link_dotfile "$HOME/.vimrc" ".vimrc"
 link_dotfile "$HOME/.gitconfig" ".gitconfig"
 link_dotfile "$HOME/.config/Code/User/setting.json"
