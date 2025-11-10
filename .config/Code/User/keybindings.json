@@ -1,0 +1,21 @@
+// 既定値を上書きするには、このファイル内にキー バインドを挿入します
+[
+    {
+        "key": "ctrl+t",
+        "command": "workbench.action.terminal.focus",
+        "when": "!terminalAltBufferActive"
+    },
+    {
+        "key": "ctrl+down",
+        "command": "-workbench.action.terminal.focus",
+        "when": "accessibilityModeEnabled && accessibleViewOnLastLine && terminalHasBeenCreated && accessibleViewCurrentProviderId == 'terminal' || accessibilityModeEnabled && accessibleViewOnLastLine && terminalProcessSupported && accessibleViewCurrentProviderId == 'terminal'"
+    },
+    {
+        "key": "ctrl+t",
+        "command": "-workbench.action.showAllSymbols"
+    },
+    {
+        "key": "ctrl+[BracketLeft]",
+        "command": "workbench.action.terminal.newWithProfile"
+    }
+]

@@ -1,2 +1,21 @@
-{ "workbench.colorTheme": "Everforest Dark",  
+{
+    "editor.fontFamily": "'FiraCode Nerd Font','JetBrainsMono Nerd Font'",
+    "editor.fontLigatures": true,
+    "editor.minimap.enabled": false, // ミニマップを非表示にする
+    "editor.renderControlCharacters": true, // 制御文字を表示する
+    "editor.suggestSelection": "first", // サジェスト一覧の初期表示項目設定
+    "breadcrumbs.enabled": true, // ファイルのパンくずリストを表示する
+    "files.insertFinalNewline": true, // ファイルの末尾を改行で終わらせる
+    "editor.fontSize": 17, // フォントサイズを変更
+    "editor.renderLineHighlight": "all", // 選択行の行番号をハイライトする
+    "editor.cursorBlinking": "smooth", // カーソルが滑らかに点滅するように
+    "editor.cursorStyle": "block", // カーソルの外観をブロックに変更
+    "files.autoGuessEncoding": true, // ファイルの自動エンコードを実施
+    "window.zoomLevel": 0, // 画面全体の表示サイズはデフォルト
+    "editor.bracketPairColorization.enabled": true,
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorTheme": "Catppuccin Mocha", // 括弧の対応を色付ける
+    "workbench.tree.indent": 20,
+    "workbench.tree.renderIndentGuides": "always",
+    
 }

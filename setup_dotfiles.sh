@@ -68,10 +68,10 @@ link_dotfile "$HOME/.config/eww" ".config/eww"
 link_dotfile "$HOME/.config/"
 
 #エディタ
-link_dotfile "$HOME/.config/Code/User/settings.json"
-link_dotfile "$HOME/.config/Code/User/keybindings.json"
-link_dotfile "$HOME/.config/zed/settings.json"
-link_dotfile "$HOME/.config/zed/keymap.json"
+link_dotfile "$HOME/.config/Code/User/settings.json" ".config/Code/User/settings.json"
+link_dotfile "$HOME/.config/Code/User/keybindings.json" ".config/Code/User/keybindings.json"
+link_dotfile "$HOME/.config/zed/settings.json" ".config/zed/settings.json"
+link_dotfile "$HOME/.config/zed/keymap.json" ".config/zed/keymap.json"
 
 # その他の設定
 link_dotfile "$HOME/.config/fish" ".config/fish"
