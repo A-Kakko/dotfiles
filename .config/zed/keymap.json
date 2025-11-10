@@ -1,0 +1,95 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      // "shift shift": "file_finder::Toggle"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      // "j k": "vim::NormalBefore"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "shift shift": "file_finder::Toggle"
+    }
+  },
+
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      // "j k": "vim::NormalBefore"
+      "j j": "vim::NormalBefore"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == normal && !menu",
+    "bindings": {
+      "d": ["workspace::SendKeystrokes", "\" _ d"],
+      "D": ["workspace::SendKeystrokes", "\" _ D"],
+      "c": ["workspace::SendKeystrokes", "\" _ c"],
+      "s": ["workspace::SendKeystrokes", "\" _ s"],
+      "ctrl-l": ["workspace::SendKeystrokes", "escase : nohlsearch enter"]
+    }
+  },
+  {
+    "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
+    "bindings": {
+      "ctrl-g h": "workspace::ActivatePaneLeft", // 左の分割ペインに移動
+      "ctrl-g j": "workspace::ActivatePaneDown", // 下の分割ペインに移動
+      "ctrl-g k": "workspace::ActivatePaneUp", // 上の分割ペインに移動
+      "ctrl-g l": "workspace::ActivatePaneRight", // 右の分割ペインに移動
+      "ctrl-g s": "pane::SplitDown", // 下に分割
+      "ctrl-g v": "pane::SplitRight", // 右に分割
+      "ctrl-w q": "pane::CloseActiveItem", // アクティブなタブを閉じる
+      "ctrl-w w": "workspace::Save", // ファイルを保存する
+      "shift-h": "pane::ActivatePreviousItem", // 前のタブに移動
+      "shift-l": "pane::ActivateNextItem" // 次のタブに移動
+    }
+  },
+  {
+    "context": "Dock",
+    "bindings": {
+      "ctrl-g h": "workspace::ActivatePaneLeft",
+      "ctrl-g l": "workspace::ActivatePaneRight"
+    }
+  },
+  {
+    "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
+    "bindings": {
+      "space c": "pane::CloseActiveItem",
+      "space b C": "pane::CloseAllItems",
+      "space e": "workspace::ToggleLeftDock",
+      "space f f": "file_finder::Toggle",
+      "space l a": "editor::ToggleCodeActions",
+      "space l d": "diagnostics::Deploy",
+      "space l f": "editor::Format",
+      "space l s": "outline::Toggle",
+      "space l r": "editor::Rename",
+      "space o": "tab_switcher::Toggle",
+      "space t h": "workspace::OpenInTerminal",
+      "space t f": "workspace::NewCenterTerminal",
+      "space /": "editor::ToggleComments",
+      "g d v": "editor::GoToDefinitionSplit",
+      "g r": "editor::FindAllReferences",
+      ">": "vim::Indent"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown"
+    }
+  }
+]

@@ -67,11 +67,17 @@ link_dotfile "$HOME/.config/waybar" ".config/waybar"
 link_dotfile "$HOME/.config/eww" ".config/eww"
 link_dotfile "$HOME/.config/"
 
+#エディタ
+link_dotfile "$HOME/.config/Code/User/settings.json"
+link_dotfile "$HOME/.config/Code/User/keybindings.json"
+link_dotfile "$HOME/.config/zed/settings.json"
+link_dotfile "$HOME/.config/zed/keymap.json"
+
 # その他の設定
 link_dotfile "$HOME/.config/fish" ".config/fish"
 link_dotfile "$HOME/.vimrc" ".vimrc"
 link_dotfile "$HOME/.gitconfig" ".gitconfig"
-link_dotfile "$HOME/.config/Code/User/setting.json"
+
 link_dotfile "$HOME/.config/kitty" ".config/kitty"
 link_dotfile "$HOME/.config/alacritty" ".config/alacritty"
 link_dotfile "$HOME/.config/yazi" ".config/yazi"
