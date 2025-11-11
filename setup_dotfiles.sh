@@ -65,7 +65,9 @@ link_dotfile "$HOME/.tmux.conf" ".tmux.conf"
 link_dotfile "$HOME/.config/hypr" ".config/hypr"
 link_dotfile "$HOME/.config/waybar" ".config/waybar"
 link_dotfile "$HOME/.config/eww" ".config/eww"
-link_dotfile "$HOME/.config/"
+
+# Omarchy固有設定
+link_dotfile "$HOME/.local/share/omarchy/bin/omarchy-launch-webapp" ".local/share/omarchy/bin/omarchy-launch-webapp"
 
 #エディタ
 link_dotfile "$HOME/.config/Code/User/settings.json" ".config/Code/User/settings.json"
