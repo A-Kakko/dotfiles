@@ -4,9 +4,9 @@ general.import = [ "~/.config/omarchy/current/theme/alacritty.toml" ]
 TERM = "xterm-256color"
 
 [font]
-normal = { family = "JetBrainsMono Nerd Font Mono" }
-bold = { family = "JetBrainsMono Nerd Font Mono" }
-italic = { family = "JetBrainsMono Nerd Font Mono" }
+normal = { family = "Monaspace Neon Frozen" }
+bold = { family = "Monaspace Neon Frozen" }
+italic = { family = "Monaspace Neon Frozen" }
 size = 9
 
 [window]

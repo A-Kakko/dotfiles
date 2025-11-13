@@ -17,5 +17,8 @@
     "workbench.colorTheme": "Catppuccin Mocha", // 括弧の対応を色付ける
     "workbench.tree.indent": 20,
     "workbench.tree.renderIndentGuides": "always",
-    
+    "cSpell.userWords": [
+        "Omarchy"
+    ],
+    "keyboard.dispatch": "keyCode",
 }
