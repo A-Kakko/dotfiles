@@ -1,0 +1,1 @@
+/home/korsk/.config/omarchy/current/theme/neovim.lua

@@ -76,7 +76,8 @@ link_dotfile "$HOME/.config/Code/User/settings.json" ".config/Code/User/settings
 link_dotfile "$HOME/.config/Code/User/keybindings.json" ".config/Code/User/keybindings.json"
 link_dotfile "$HOME/.config/zed/settings.json" ".config/zed/settings.json"
 link_dotfile "$HOME/.config/zed/keymap.json" ".config/zed/keymap.json"
-link_dotfile "$HOME/.config/nvim/init.lua" "./config/nvim/init.lua"
+link_dotfile "$HOME/.config/nvim/init." "./config/nvim/init.lua"
+link_dotfile "$HOME/.config/nvim/lua" "./config/nvim/lua"
 
 # その他の設定
 link_dotfile "$HOME/.config/fish" ".config/fish"
