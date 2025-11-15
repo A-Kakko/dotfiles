@@ -81,3 +81,4 @@ abbr -a gc git commit
 abbr -a gcm git commit -m
 abbr -a gpom git push -u origin main
 abbr -a vim nvim
+abbr -a font ~/Documents/mytools/install-font-from-git.sh

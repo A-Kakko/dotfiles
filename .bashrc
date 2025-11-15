@@ -12,3 +12,5 @@ alias p='python'
 
 . "$HOME/.local/share/../bin/env"
 . "$HOME/.cargo/env"
+
+export WEATHER_PLACE="Nagaoka,Niigata"

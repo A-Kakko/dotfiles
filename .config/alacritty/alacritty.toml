@@ -4,9 +4,9 @@ general.import = [ "~/.config/omarchy/current/theme/alacritty.toml" ]
 TERM = "xterm-256color"
 
 [font]
-normal = { family = "Monaspace Neon Frozen" }
-bold = { family = "Monaspace Neon Frozen" }
-italic = { family = "Monaspace Neon Frozen" }
+normal = { family = "HackGen Console NF" }
+bold = { family = "HackGen Console NF" }
+italic = { family = "HackGen Console NF" }
 size = 9
 
 [window]
