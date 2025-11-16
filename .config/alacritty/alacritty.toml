@@ -8,9 +8,9 @@ program = "fish"
 #args = ["attach", "-c", "main"]
 
 [font]
-normal = { family = "HackGen Console NF" }
-bold = { family = "HackGen Console NF" }
-italic = { family = "HackGen Console NF" }
+normal = { family = "PlemolJP Console NF" }
+bold = { family = "PlemolJP Console NF" }
+italic = { family = "PlemolJP Console NF" }
 size = 11
 
 [window]
