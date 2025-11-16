@@ -20,6 +20,7 @@ abbr -a c clear
 abbr -a .. 'cd ..'
 abbr -a ... 'cd ../..'
 
+abbr -a vim nvim
 # ==================== Zellij関連のエイリアス ==================== #
 alias ta='zellij attach'
 alias tl='zellij list-sessions'

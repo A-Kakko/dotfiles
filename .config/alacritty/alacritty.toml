@@ -4,16 +4,16 @@ general.import = [ "~/.config/omarchy/current/theme/alacritty.toml" ]
 TERM = "xterm-256color"
 
 [shell]
-program = "zellij"
-args = ["attach", "-c", "main"]
+program = "fish"
+#args = ["attach", "-c", "main"]
 
 [font]
-normal = { family = "Monaspace Neon Frozen" }
-bold = { family = "Monaspace Neon Frozen" }
-italic = { family = "Monaspace Neon Frozen" }
-size = 9
+normal = { family = "HackGen Console NF" }
+bold = { family = "HackGen Console NF" }
+italic = { family = "HackGen Console NF" }
+size = 11
 
 [window]
-padding.x = 14
-padding.y = 14
-decorations = "None"
+#padding.x = 14
+#padding.y = 14
+#decorations = "None"
