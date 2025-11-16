@@ -1,1 +1,0 @@
-/home/korsk/dotfiles/.config/fish/config.fish

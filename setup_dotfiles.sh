@@ -25,8 +25,8 @@ link_dotfile() {
     
     # 既にシンボリックリンクの場合はスキップ
     if [ -L "$source" ]; then
-        echo -e "${YELLOW}スキップ: $source は既にシンボリックリンクです${NC}"
-        return
+       echo -e "${YELLOW}スキップ: $source は既にシンボリックリンクです${NC}"
+         return
     fi
     
     # targetの親ディレクトリを作成
@@ -60,13 +60,12 @@ link_dotfile "$HOME/.bashrc" ".bashrc"
 link_dotfile "$HOME/.bash_profile" ".bash_profile"
 link_dotfile "$HOME/.zshrc" ".zshrc"
 link_dotfile "$HOME/.tmux.conf" ".tmux.conf"
-link_dotfile "$HOME/.config/zellij/config.kdl" "./config/zellij/config.kdl"
-link_dotfile "$HOME/.config/ghostty/config" "./config/ghostty/config"
+link_dotfile "$HOME/.config/zellij/config.kdl" ".config/zellij/config.kdl"
+link_dotfile "$HOME/.config/ghostty/config" ".config/ghostty/config"
 
 # Hyprland関連
 link_dotfile "$HOME/.config/hypr" ".config/hypr"
 link_dotfile "$HOME/.config/waybar" ".config/waybar"
-link_dotfile "$HOME/.config/eww" ".config/eww"
 
 # Omarchy固有設定
 link_dotfile "$HOME/.local/share/omarchy/bin/omarchy-launch-webapp" ".local/share/omarchy/bin/omarchy-launch-webapp"
@@ -76,8 +75,8 @@ link_dotfile "$HOME/.config/Code/User/settings.json" ".config/Code/User/settings
 link_dotfile "$HOME/.config/Code/User/keybindings.json" ".config/Code/User/keybindings.json"
 link_dotfile "$HOME/.config/zed/settings.json" ".config/zed/settings.json"
 link_dotfile "$HOME/.config/zed/keymap.json" ".config/zed/keymap.json"
-link_dotfile "$HOME/.config/nvim/init." "./config/nvim/init.lua"
-link_dotfile "$HOME/.config/nvim/lua" "./config/nvim/lua"
+link_dotfile "$HOME/.config/nvim/init.lua" ".config/nvim/init.lua"
+link_dotfile "$HOME/.config/nvim/lua" ".config/nvim/lua"
 
 # その他の設定
 link_dotfile "$HOME/.config/fish" ".config/fish"
