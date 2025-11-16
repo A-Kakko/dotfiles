@@ -7,17 +7,12 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "agent_buffer_font_size": 15.0,
   "base_keymap": "VSCode",
-  "buffer_font_family": "M+1Code Nerd Font",
-  "icon_theme": {
-    "mode": "system",
-    "light": "Catppuccin Mocha",
-    "dark": "Catppuccin Mocha"
-  },
+  "buffer_font_family": "JetBrainsMono Nerd Font",
+  "icon_theme": "Catppuccin Mocha",
   "theme": {
     "mode": "system",
-    "light": "Catppuccin Latte - No Italics",
+    "light": "One Light",
     "dark": "Catppuccin Mocha"
   },
   "tabs": {
@@ -62,7 +57,7 @@
     // "use_smartcase_find": ""
     //
   },
-  "relative_line_numbers": "enabled",
+  "relative_line_numbers": true,
   "experimental.theme_overrides": {
     "border.focused": "#39ff14ff",
     "border.selected": "#39ff14ff"
