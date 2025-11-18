@@ -83,6 +83,7 @@ function __done_get_focused_window_id
         and type -q jq
         swaymsg --type get_tree | jq '.. | objects | select(.focused == true) | .id'
     else if test -n "$HYPRLAND_INSTANCE_SIGNATURE"
+        and type -q hyprctl
         hyprctl activewindow | awk 'NR==1 {print $2}'
     else if test -n "$NIRI_SOCKET"
         and type -q jq
@@ -155,6 +156,7 @@ function __done_is_process_window_focused
         string match --quiet --regex "^true" (swaymsg -t get_tree | jq ".. | objects | select(.id == "$__done_initial_window_id") | .visible")
         return $status
     else if test -n "$HYPRLAND_INSTANCE_SIGNATURE"
+        and type -q hyprctl
         and test $__done_initial_window_id = (hyprctl activewindow | awk 'NR==1 {print $2}')
         return $status
     else if test -n "$NIRI_SOCKET"

@@ -26,7 +26,6 @@ alias ta='zellij attach'
 alias tl='zellij list-sessions'
 alias tk='zellij kill-session'
 alias tn='zellij -s'
-alias z='zellij'
 alias zls='zellij list-sessions'
 alias za='zellij attach'
 alias zk='zellij kill-session'
@@ -41,7 +40,12 @@ set -x LC_ALL ja_JP.UTF-8
 set -x EDITOR nvim
 set -x VISUAL nvim
 
+# ターミナル
+set -x TERMINAL ghostty
+
 # ==================== Fisher プラグイン（インストール済みなら） ==================== #
 # z - ディレクトリジャンプ
 # fzf - 曖昧検索
 # ghq - リポジトリ管理
+zoxide init fish | source
+fish_add_path ~/.cargo/bin
