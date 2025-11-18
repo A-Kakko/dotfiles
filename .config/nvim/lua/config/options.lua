@@ -6,3 +6,6 @@ vim.opt.relativenumber = false
 vim.opt.termguicolors = true
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+
+---
+vim.g.lazyvim_rust_diagnostics = "rust-analyzer"
