@@ -8,9 +8,9 @@ program = "fish"
 #args = ["attach", "-c", "main"]
 
 [font]
-normal = { family = "PlemolJP Console NF" }
-bold = { family = "PlemolJP Console NF" }
-italic = { family = "PlemolJP Console NF" }
+normal = { family = "FiraCode Nerd Font" }
+bold = { family = "FiraCode Nerd Font" }
+italic = { family = "FiraCode Nerd Font" }
 size = 11
 
 [window]
