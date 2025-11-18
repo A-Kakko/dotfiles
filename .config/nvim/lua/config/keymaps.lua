@@ -2,6 +2,7 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 -- jjでインサートモードを抜ける
+local Util = require("lazyvim.util")
 vim.keymap.set("i", "jj", "<Esc>", { desc = "Exit insert mode" })
 vim.keymap.set("i", "jk", "<Esc>", { desc = "Exit insert mode" })
 -- x, d, c, s でレジスタに保存しない（ブラックホールレジスタ使用）
@@ -16,3 +17,11 @@ vim.keymap.set({ "n", "v" }, "X", "d", { desc = "Cut to register" })
 -- dd, cc も無名レジスタに保存しない
 vim.keymap.set("n", "dd", '"_dd', { desc = "Delete line without yank" })
 vim.keymap.set("n", "cc", '"_cc', { desc = "Change line without yank" })
+
+-- ターミナルにボーダーを追加する。
+local lazyterm = function()
+	Util.terminal(nil, { cwd = Util.root(), border = "rounded" })
+end
+vim.keymap.set("n", "<leader>ft", lazyterm, { desc = "Terminal (root dir)" })
+vim.keymap.set("n", "<C-/>", lazyterm, { desc = "Terminal (root dir)" })
+vim.keymap.set("n", "<C-_>", lazyterm, { desc = "which_key_ignore" })
