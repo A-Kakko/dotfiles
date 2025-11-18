@@ -31,6 +31,7 @@
     "~/.config/waybar/modules/bluetooth.jsonc",
     "~/.config/waybar/modules/custom/system_update.jsonc",
     // modules-right
+    "~/.config/waybar/modules/custom/weather.jsonc",
     "~/.config/waybar/modules/mpris.jsonc",
     "~/.config/waybar/modules/pulseaudio.jsonc",
     "~/.config/waybar/modules/backlight.jsonc",
@@ -77,6 +78,7 @@
     "custom/right_div#5"
   ],
   "modules-right": [
+    "custom/weather",
     "mpris",
     "custom/left_div#6",
     "group/pulseaudio",

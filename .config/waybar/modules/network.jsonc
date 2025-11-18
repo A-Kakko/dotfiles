@@ -5,7 +5,7 @@
 		"interval": 10,
 		// "family":
 		"format": "󰤨",
-		"format-ethernet": "󰈀",
+		"format-ethernet": "󰈁",
 		"format-wifi": "{icon}",
 		// "format-linked":
 		"format-disconnected": "󰤯",
