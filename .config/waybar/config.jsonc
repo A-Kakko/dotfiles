@@ -20,6 +20,7 @@
     "~/.config/waybar/modules/hyprland/workspaces.jsonc",
     "~/.config/waybar/modules/hyprland/window.jsonc",
     // modules-center
+    "~/.config/waybar/modules/custom/timer.jsonc",
     "~/.config/waybar/modules/hyprland/windowcount.jsonc",
     "~/.config/waybar/modules/temperature.jsonc",
     "~/.config/waybar/modules/memory.jsonc",
@@ -35,7 +36,7 @@
     "~/.config/waybar/modules/mpris.jsonc",
     "~/.config/waybar/modules/pulseaudio.jsonc",
     "~/.config/waybar/modules/backlight.jsonc",
-    "~/.config/waybar/modules/battery.jsonc",
+    //    "~/.config/waybar/modules/battery.jsonc",
     "~/.config/waybar/modules/custom/power_menu.jsonc",
     "~/.config/waybar/modules/custom/dividers.jsonc",
     // modules that are not included by default:
@@ -56,6 +57,7 @@
   ],
   "modules-center": [
     //"hyprland/windowcount",
+    "custom/timer",
     "custom/left_div#2",
     "temperature",
     "custom/left_div#3",
@@ -85,7 +87,7 @@
     "custom/left_div#7",
     "backlight",
     "custom/left_div#8",
-    "battery",
+    //   "battery",
     "custom/left_inv#2",
     "tray",
     "custom/power_menu"

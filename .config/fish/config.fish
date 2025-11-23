@@ -21,6 +21,10 @@ abbr -a .. 'cd ..'
 abbr -a ... 'cd ../..'
 
 abbr -a vim nvim
+abbr -a lg lazygit
+abbr -a ls exa
+abbr -a cat bat
+abbr -a cr 'cargo run'
 # ==================== Zellij関連のエイリアス ==================== #
 alias ta='zellij attach'
 alias tl='zellij list-sessions'

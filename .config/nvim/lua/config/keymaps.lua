@@ -13,10 +13,14 @@ vim.keymap.set({ "n", "v" }, "s", '"_s', { desc = "Substitute without yank" })
 
 -- X（大文字）はレジスタに保存（通常の動作）
 vim.keymap.set({ "n", "v" }, "X", "d", { desc = "Cut to register" })
+vim.keymap.set("n", "XX", '""dd', { desc = "Cut line to register" })
 
 -- dd, cc も無名レジスタに保存しない
 vim.keymap.set("n", "dd", '"_dd', { desc = "Delete line without yank" })
 vim.keymap.set("n", "cc", '"_cc', { desc = "Change line without yank" })
+
+-- Jでなにもしない
+vim.keymap.set("n", "J", "", { desc = "None" })
 
 -- ターミナルにボーダーを追加する。
 local lazyterm = function()
@@ -25,3 +29,7 @@ end
 vim.keymap.set("n", "<leader>ft", lazyterm, { desc = "Terminal (root dir)" })
 vim.keymap.set("n", "<C-/>", lazyterm, { desc = "Terminal (root dir)" })
 vim.keymap.set("n", "<C-_>", lazyterm, { desc = "which_key_ignore" })
+vim.keymap.set({ "n", "x" }, "s", "<Nop>")
+vim.keymap.set("i", "<C-CR>", function()
+	require("in-and-out").in_and_out()
+end)
