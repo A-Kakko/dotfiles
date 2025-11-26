@@ -24,12 +24,12 @@ vim.keymap.set("n", "J", "", { desc = "None" })
 
 -- ターミナルにボーダーを追加する。
 local lazyterm = function()
-	Util.terminal(nil, { cwd = Util.root(), border = "rounded" })
+  Util.terminal(nil, { cwd = Util.root(), border = "rounded" })
 end
 vim.keymap.set("n", "<leader>ft", lazyterm, { desc = "Terminal (root dir)" })
 vim.keymap.set("n", "<C-/>", lazyterm, { desc = "Terminal (root dir)" })
 vim.keymap.set("n", "<C-_>", lazyterm, { desc = "which_key_ignore" })
 vim.keymap.set({ "n", "x" }, "s", "<Nop>")
 vim.keymap.set("i", "<C-CR>", function()
-	require("in-and-out").in_and_out()
+  require("in-and-out").in_and_out()
 end)
