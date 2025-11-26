@@ -1,130 +1,242 @@
 #!/bin/bash
 
-# 色付き出力用
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-BLUE='\033[1;34m'
-NC='\033[0m' # No Color
+# スクリプトのディレクトリを取得
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-# dotfilesディレクトリのパス
-DOTFILES_DIR="$HOME/dotfiles"
-REPO_URL="git@github.com:あなたのユーザー名/dotfiles.git"  # ここを自分のリポジトリURLに変更
+# 共通関数を読み込み
+source "$SCRIPT_DIR/scripts/common.sh"
 
-echo -e "${BLUE}=== Dotfiles セットアップスクリプト ===${NC}"
-echo ""
+# ヘルプメッセージを表示
+show_help() {
+    cat << EOF
+使い方: ./setup.sh [OPTIONS]
 
-# 1. dotfilesリポジトリをクローン
-if [ -d "$DOTFILES_DIR" ]; then
-    echo -e "${YELLOW}$DOTFILES_DIR は既に存在します${NC}"
-    read -p "既存のディレクトリを削除して再クローンしますか？ (y/N): " -n 1 -r
-    echo
-    if [[ $REPLY =~ ^[Yy]$ ]]; then
-        rm -rf "$DOTFILES_DIR"
-    else
-        echo -e "${RED}セットアップを中止します${NC}"
-        exit 1
-    fi
-fi
+OPTIONS:
+    -h, --help          このヘルプメッセージを表示
+    -a, --all           全てのツールをセットアップ
+    -n, --nvim          Neovimのみセットアップ
+    -s, --starship      Starshipのみセットアップ
+    -g, --ghostty       Ghosttyのみセットアップ
+    -z, --zellij        Zellijのみセットアップ
+    -y, --yazi          Yaziのみセットアップ
+    -w, --waybar        Waybarのみセットアップ
+    -f, --fish          Fish Shellのみセットアップ
 
-echo -e "${GREEN}dotfilesをクローンしています...${NC}"
-git clone "$REPO_URL" "$DOTFILES_DIR"
+例:
+    ./setup.sh --all              # 全てをセットアップ
+    ./setup.sh --nvim --starship  # NvimとStarshipのみセットアップ
+    ./setup.sh --fish --yazi      # FishとYaziのみセットアップ
+    ./setup.sh                    # 対話モードで選択
 
-if [ $? -ne 0 ]; then
-    echo -e "${RED}クローンに失敗しました${NC}"
-    exit 1
-fi
-
-# 2. シンボリックリンクを作成する関数
-create_symlink() {
-    local source="$DOTFILES_DIR/$1"
-    local target="$HOME/$1"
-    
-    # sourceが存在しない場合はスキップ
-    if [ ! -e "$source" ]; then
-        echo -e "${YELLOW}スキップ: $source は存在しません${NC}"
-        return
-    fi
-    
-    # targetの親ディレクトリを作成
-    mkdir -p "$(dirname "$target")"
-    
-    # targetが既に存在する場合の処理
-    if [ -e "$target" ] || [ -L "$target" ]; then
-        # 既にシンボリックリンクで、同じ場所を指している場合はスキップ
-        if [ -L "$target" ] && [ "$(readlink "$target")" = "$source" ]; then
-            echo -e "${YELLOW}スキップ: $target は既に正しくリンクされています${NC}"
-            return
-        fi
-        
-        # バックアップを作成
-        backup="$target.backup.$(date +%Y%m%d_%H%M%S)"
-        echo -e "${YELLOW}バックアップ: $target -> $backup${NC}"
-        mv "$target" "$backup"
-    fi
-    
-    # シンボリックリンクを作成
-    echo -e "${GREEN}リンク作成: $target -> $source${NC}"
-    ln -s "$source" "$target"
+EOF
 }
 
-# 3. シンボリックリンクを作成
-echo ""
-echo -e "${BLUE}シンボリックリンクを作成しています...${NC}"
+# 対話的にツールを選択
+interactive_setup() {
+    log_info "=== Dotfiles セットアップ ==="
+    log_info "セットアップするツールを選択してください"
+    echo ""
 
-# シェル設定
-create_symlink ".bashrc"
-create_symlink ".bash_profile"
-create_symlink ".zshrc"
-
-# Fish & Tmux
-create_symlink ".config/fish"
-create_symlink ".tmux.conf"
-
-# Hyprland関連
-create_symlink ".config/hypr"
-create_symlink ".config/waybar"
-create_symlink ".config/eww"
-
-# その他の設定
-create_symlink ".vimrc"
-create_symlink ".gitconfig"
-create_symlink ".config/kitty"
-create_symlink ".config/alacritty"
-create_symlink ".config/neofetch"
-
-# 追加したい設定ファイルがあればここに追記
-# create_symlink ".config/nvim"
-# create_symlink ".config/Code"
-
-# 4. oh-my-fishの復元
-echo ""
-if [ -f "$DOTFILES_DIR/omf_bundle" ]; then
-    echo -e "${BLUE}oh-my-fishプラグインを復元しますか？${NC}"
-    echo "事前に oh-my-fish をインストールしておく必要があります"
-    echo "インストールコマンド: curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish"
-    read -p "復元を実行しますか？ (y/N): " -n 1 -r
+    read -p "Neovim をセットアップしますか? (y/N): " -n 1 -r
     echo
     if [[ $REPLY =~ ^[Yy]$ ]]; then
-        if command -v omf &> /dev/null; then
-            omf import "$DOTFILES_DIR/omf_bundle"
-            echo -e "${GREEN}oh-my-fishプラグインを復元しました${NC}"
-        else
-            echo -e "${RED}omfコマンドが見つかりません。先にoh-my-fishをインストールしてください${NC}"
-        fi
+        SETUP_NVIM=true
     fi
-fi
 
-# 5. 完了メッセージ
-echo ""
-echo -e "${GREEN}=== セットアップ完了 ===${NC}"
-echo ""
-echo "次のステップ:"
-echo "1. シェルを再起動するか、設定を再読み込みしてください"
-echo "   - Bash: source ~/.bashrc"
-echo "   - Fish: source ~/.config/fish/config.fish"
-echo "2. バックアップファイル(*.backup.*)が不要なら削除してください"
-echo "3. oh-my-fishをまだインストールしていない場合:"
-echo "   curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish"
-echo ""
-echo -e "${BLUE}Enjoy your dotfiles!${NC}"
+    read -p "Starship をセットアップしますか? (y/N): " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        SETUP_STARSHIP=true
+    fi
+
+    read -p "Ghostty をセットアップしますか? (y/N): " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        SETUP_GHOSTTY=true
+    fi
+
+    read -p "Zellij をセットアップしますか? (y/N): " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        SETUP_ZELLIJ=true
+    fi
+
+    read -p "Yazi をセットアップしますか? (y/N): " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        SETUP_YAZI=true
+    fi
+
+    read -p "Waybar をセットアップしますか? (y/N): " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        SETUP_WAYBAR=true
+    fi
+
+    read -p "Fish Shell をセットアップしますか? (y/N): " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        SETUP_FISH=true
+    fi
+
+    echo ""
+}
+
+# セットアップを実行
+run_setup() {
+    local success_count=0
+    local fail_count=0
+
+    if [ "$SETUP_NVIM" = true ]; then
+        log_info "Neovim のセットアップを開始..."
+        if bash "$SCRIPT_DIR/scripts/nvim.sh"; then
+            ((success_count++))
+        else
+            ((fail_count++))
+        fi
+        echo ""
+    fi
+
+    if [ "$SETUP_STARSHIP" = true ]; then
+        log_info "Starship のセットアップを開始..."
+        if bash "$SCRIPT_DIR/scripts/starship.sh"; then
+            ((success_count++))
+        else
+            ((fail_count++))
+        fi
+        echo ""
+    fi
+
+    if [ "$SETUP_GHOSTTY" = true ]; then
+        log_info "Ghostty のセットアップを開始..."
+        if bash "$SCRIPT_DIR/scripts/ghostty.sh"; then
+            ((success_count++))
+        else
+            ((fail_count++))
+        fi
+        echo ""
+    fi
+
+    if [ "$SETUP_ZELLIJ" = true ]; then
+        log_info "Zellij のセットアップを開始..."
+        if bash "$SCRIPT_DIR/scripts/zellij.sh"; then
+            ((success_count++))
+        else
+            ((fail_count++))
+        fi
+        echo ""
+    fi
+
+    if [ "$SETUP_YAZI" = true ]; then
+        log_info "Yazi のセットアップを開始..."
+        if bash "$SCRIPT_DIR/scripts/yazi.sh"; then
+            ((success_count++))
+        else
+            ((fail_count++))
+        fi
+        echo ""
+    fi
+
+    if [ "$SETUP_WAYBAR" = true ]; then
+        log_info "Waybar のセットアップを開始..."
+        if bash "$SCRIPT_DIR/scripts/waybar.sh"; then
+            ((success_count++))
+        else
+            ((fail_count++))
+        fi
+        echo ""
+    fi
+
+    if [ "$SETUP_FISH" = true ]; then
+        log_info "Fish Shell のセットアップを開始..."
+        if bash "$SCRIPT_DIR/scripts/fish.sh"; then
+            ((success_count++))
+        else
+            ((fail_count++))
+        fi
+        echo ""
+    fi
+
+    # 結果を表示
+    log_info "=== セットアップ完了 ==="
+    log_success "成功: $success_count"
+    if [ $fail_count -gt 0 ]; then
+        log_error "失敗: $fail_count"
+    fi
+}
+
+# メイン処理
+main() {
+    # オプションがない場合は対話モード
+    if [ $# -eq 0 ]; then
+        interactive_setup
+        run_setup
+        exit 0
+    fi
+
+    # オプション解析
+    SETUP_NVIM=false
+    SETUP_STARSHIP=false
+    SETUP_GHOSTTY=false
+    SETUP_ZELLIJ=false
+    SETUP_YAZI=false
+    SETUP_WAYBAR=false
+    SETUP_FISH=false
+
+    while [ $# -gt 0 ]; do
+        case "$1" in
+            -h|--help)
+                show_help
+                exit 0
+                ;;
+            -a|--all)
+                SETUP_NVIM=true
+                SETUP_STARSHIP=true
+                SETUP_GHOSTTY=true
+                SETUP_ZELLIJ=true
+                SETUP_YAZI=true
+                SETUP_WAYBAR=true
+                SETUP_FISH=true
+                shift
+                ;;
+            -n|--nvim)
+                SETUP_NVIM=true
+                shift
+                ;;
+            -s|--starship)
+                SETUP_STARSHIP=true
+                shift
+                ;;
+            -g|--ghostty)
+                SETUP_GHOSTTY=true
+                shift
+                ;;
+            -z|--zellij)
+                SETUP_ZELLIJ=true
+                shift
+                ;;
+            -y|--yazi)
+                SETUP_YAZI=true
+                shift
+                ;;
+            -w|--waybar)
+                SETUP_WAYBAR=true
+                shift
+                ;;
+            -f|--fish)
+                SETUP_FISH=true
+                shift
+                ;;
+            *)
+                log_error "不明なオプション: $1"
+                show_help
+                exit 1
+                ;;
+        esac
+    done
+
+    run_setup
+}
+
+# スクリプトを実行
+main "$@"

@@ -1,4 +1,9 @@
 keybind = shift+enter=text:\x1b\r
+keybind = alt+page_up=increase_font_size:1
+keybind = alt+page_down=decrease_font_size:1
+
+# Font
+font-family = "FiraCode Nerd Font"
 
 # Zellij自動起動（セッションがあればアタッチ、なければ新規作成）
 command = shell:zellij attach -c main

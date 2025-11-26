@@ -53,3 +53,7 @@ set -x TERMINAL ghostty
 # ghq - リポジトリ管理
 zoxide init fish | source
 fish_add_path ~/.cargo/bin
+
+# Starship設定 (fish専用の設定を使用)
+set -x STARSHIP_CONFIG ~/.config/starship-fish.toml
+starship init fish | source
