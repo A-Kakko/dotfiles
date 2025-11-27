@@ -170,8 +170,7 @@ format = '[[ $symbol( $context) ](fg:crust bg:sapphire)]($style)'
 
 [rust]
 symbol = "󱘗"
-format = "[$symbol($version)]($style) "
 style = "bold red"
+format = '[ $symbol( $version) |]($style)'
 
 
-tyle = "bold green"

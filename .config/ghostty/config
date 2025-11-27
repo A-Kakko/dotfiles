@@ -7,3 +7,8 @@ font-family = "HackGen Console NF"
 
 # Zellij自動起動（セッションがあればアタッチ、なければ新規作成）
 command = shell:zellij attach -c main
+
+# Slowdown mouse scrolling
+mouse-scroll-multiplier = 0.95
+# use fish
+command = fish

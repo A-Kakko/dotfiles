@@ -773,3 +773,5 @@ themes {
 web_client {
     font "monospace"
 }
+default_shell "/usr/bin/fish"
+

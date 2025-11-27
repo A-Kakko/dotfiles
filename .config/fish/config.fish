@@ -57,3 +57,13 @@ fish_add_path ~/.cargo/bin
 # Starship設定 (fish専用の設定を使用)
 set -x STARSHIP_CONFIG ~/.config/starship-fish.toml
 starship init fish | source
+
+# ===================== ya ()========================================================#
+function y
+    set tmp (mktemp -t "yazi-cwd.XXXXXX")
+    yazi $argv --cwd-file="$tmp"
+    if read -z cwd <"$tmp"; and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+        builtin cd -- "$cwd"
+    end
+    rm -f -- "$tmp"
+end
